@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  notebook:
+    build:
+      context: ..          # project root
+      dockerfile: docker/Dockerfile
+    image: depi-assignments:latest
+    container_name: depi_notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      # Mount the entire project so changes on the host are reflected live
+      - ..:/workspace
+    restart: unless-stopped
